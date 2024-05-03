@@ -35,23 +35,26 @@ public class TextClassification {
             .build();
 
         PromptTemplate promptTemplate = PromptTemplate.from("""
-            Analyze the sentiment of the text below. Respond only with one word to describe the sentiment.
+            分析下面這段文字的情感。僅用一個字來描述這種情緒。
+            
+            INPUT: 這是個好消息！
+            OUTPUT: POSITIVE 積極
 
-            INPUT: This is fantastic news!
-            OUTPUT: POSITIVE
+            INPUT: Pi 大約等於 3.14
+            OUTPUT: NEUTRAL 中性的
 
-            INPUT: Pi is roughly equal to 3.14
-            OUTPUT: NEUTRAL
-
-            INPUT: I really disliked the pizza. Who would use pineapples as a pizza topping?
-            OUTPUT: NEGATIVE
+            INPUT: 我真的不喜歡披薩。誰會用鳳梨當披薩配料？
+            OUTPUT: NEGATIVE 消極的
 
             INPUT: {{text}}
-            OUTPUT: 
+            OUTPUT:
             """);
 
+//        Prompt prompt = promptTemplate.apply(
+//            Map.of("text", "我喜歡草莓!"));
+
         Prompt prompt = promptTemplate.apply(
-            Map.of("text", "I love strawberries!"));
+                Map.of("text", "去死吧 !"));
 
         Response<AiMessage> response = model.generate(prompt.toUserMessage());
 

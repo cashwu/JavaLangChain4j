@@ -20,11 +20,12 @@ import dev.langchain4j.model.vertexai.VertexAiGeminiChatModel;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.model.input.Prompt;
 import dev.langchain4j.model.output.Response;
+import dev.langchain4j.model.input.PromptTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class PromptTemplate {
+public class PromptTemplateClass {
     public static void main(String[] args) {
         ChatLanguageModel model = VertexAiGeminiChatModel.builder()
             .project(System.getenv("PROJECT_ID"))
@@ -37,16 +38,17 @@ public class PromptTemplate {
             .maxRetries(3)
             .build();
 
-        dev.langchain4j.model.input.PromptTemplate promptTemplate = dev.langchain4j.model.input.PromptTemplate.from("""
-            You're a friendly chef with a lot of cooking experience.
-            Create a recipe for a {{dish}} with the following ingredients: \
-            {{ingredients}}, and give it a name.
+        PromptTemplate promptTemplate = PromptTemplate.from("""
+            你是一位友善的廚師，擁有豐富的烹飪經驗。
+            使用以下成分建立 {{dish}} 的食譜 :
+            {{ingredients}}，並給它一個名字
+            請使用正體(繁體)中文回答
             """
         );
 
         Map<String, Object> variables = new HashMap<>();
-        variables.put("dish", "dessert");
-        variables.put("ingredients", "strawberries, chocolate, and whipped cream");
+        variables.put("dish", "甜點");
+        variables.put("ingredients", "草莓、巧克力和生奶油");
 
         Prompt prompt = promptTemplate.apply(variables);
 

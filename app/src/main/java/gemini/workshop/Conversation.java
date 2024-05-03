@@ -46,8 +46,8 @@ public class Conversation {
 
         List.of(
             "Hello!",
-            "What is the country where the Eiffel tower is situated?",
-            "How many inhabitants are there in that country?"
+            "艾菲爾鐵塔位於哪個國家？",
+            "那個國家有多少居民?"
         ).forEach( message -> {
             System.out.println("\nUser: " + message);
             System.out.println("Gemini: " + conversation.chat(message));

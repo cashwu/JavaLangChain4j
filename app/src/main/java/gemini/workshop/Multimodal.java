@@ -38,7 +38,7 @@ public class Multimodal {
 
         UserMessage userMessage = UserMessage.from(
             ImageContent.from(CAT_IMAGE_URL),
-            TextContent.from("Describe the picture")
+            TextContent.from("描述這張圖片，使用正體中文回答")
         );
 
         Response<AiMessage> response = model.generate(userMessage);

@@ -28,7 +28,7 @@ public class StreamQA {
             .maxOutputTokens(4000)
             .build();
         
-        model.generate("Why is the sky blue?", new StreamingResponseHandler<>() {
+        model.generate("Why is the sky blue? 使用正體中文回答", new StreamingResponseHandler<>() {
             @Override
             public void onNext(String text) {
                 System.out.println(text);

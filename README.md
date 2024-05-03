@@ -66,3 +66,7 @@ In order to run these examples, you need to have a Google Cloud account and proj
 
 ---
 This is not an official Google product.
+
+
+- https://docs.langchain4j.dev/integrations/language-models/google-gemini/
+- https://docs.langchain4j.dev/integrations/language-models/google-palm/
